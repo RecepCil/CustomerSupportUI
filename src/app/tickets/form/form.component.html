@@ -1,3 +1,81 @@
-<p>
-  form works!
-</p>
+<form [formGroup]="form" 
+      id="form" 
+      name="form"
+      class="normal-form">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <mat-select formControlName="ticketType" 
+                      placeholder="Ticket Type"
+                      required >
+            <mat-option *ngFor="let type of ticketTypes" [value]="type" >
+              {{ type }}
+            </mat-option>
+          </mat-select>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="customerEmail" 
+                 placeholder="E-mail Address"
+                 matInput 
+                 required>
+          <mat-error>Invalid e-mail address.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="customerPhone" 
+                 placeholder="Mobile Phone" 
+                 matInput 
+                 required>
+          <mat-error *ngIf="form.controls['customerPhone'].errors?.required">This field is mandatory.</mat-error>
+          <mat-error *ngIf="form.controls['customerPhone'].errors?.minlength">Minimum 8 charactors needed.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="customerNumber" 
+                 placeholder="Customer Number"
+                 type="number" 
+                 matInput>
+          <mat-error>Invalid customer number!</mat-error>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <mat-form-field>
+          <textarea formControlName="comments" 
+                    id="comments" 
+                    name="comments"
+                    placeholder="Comments"
+                    matInput 
+                    required>
+          </textarea>
+          <mat-error>This field is mandatory.</mat-error>
+        </mat-form-field>
+        <div class="add-bottom-padding">
+          <mat-checkbox formControlName="checkedTerms" 
+                        id="checkedTerms" 
+                        name="checkedTerms"
+                        matInput 
+                        required>
+            Terms & Conditions
+          </mat-checkbox>
+        </div>
+        <div class="button-row">
+          <button id = "submitButton"
+                  name ="submitButton" 
+                  color="primary" 
+                  (click)="onSubmit()" 
+                  type="submit" 
+                  [disabled]="form.invalid"
+                  mat-raised-button>
+            Submit
+          </button>
+          <button mat-raised-button color="warn" 
+                  (click)="onClear()">
+            Clear
+          </button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
