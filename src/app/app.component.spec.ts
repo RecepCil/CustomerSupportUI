@@ -17,7 +17,11 @@ describe('AppComponent', () => {
       ],
       imports: [
         BrowserModule,
-        MaterialModule
+        MaterialModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule
       ]
     }).compileComponents();
   }));
