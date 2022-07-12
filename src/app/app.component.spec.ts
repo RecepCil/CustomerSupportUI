@@ -4,14 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './material/material.module';
+import { FormComponent } from './tickets/form/form.component';
+import { TicketsComponent } from './tickets/tickets.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        TicketsComponent,
+        FormComponent
       ],
       imports: [
         BrowserModule,
+        MaterialModule
       ]
     }).compileComponents();
   }));
