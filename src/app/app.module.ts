@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { FormComponent } from './tickets/form/form.component';
 import { MaterialModule } from './material/material.module';
+import { TicketApiService } from './services/ticket-api.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { MaterialModule } from './material/material.module';
     BrowserModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [TicketApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
