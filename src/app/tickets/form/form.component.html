@@ -25,6 +25,7 @@
         <mat-form-field>
           <input formControlName="customerPhone" 
                  placeholder="Mobile Phone" 
+                 type="number"
                  matInput 
                  required>
           <mat-error *ngIf="form.controls['customerPhone'].errors?.required">This field is mandatory.</mat-error>
