@@ -15,6 +15,7 @@ export class FormComponent implements OnInit {
 
   constructor(private service:TicketApiService) { }
 
+  breakpoint: number;
   form: FormGroup = new FormGroup({
     ticketType: new FormControl('', Validators.required),
     customerEmail: new FormControl('', Validators.email),
@@ -25,6 +26,7 @@ export class FormComponent implements OnInit {
   });
   
   ngOnInit() {
+    this.breakpoint = (window.innerWidth <= 1000) ? 1 : 2;
     this.initializeFormGroup();
   }
 
@@ -77,5 +79,9 @@ export class FormComponent implements OnInit {
         }) 
       }
     )
+  }
+
+  onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 1000) ? 1 : 2;
   }
 }
